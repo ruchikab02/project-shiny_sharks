@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+    <head>
+        <script src="../js/scripts.js" async></script>
+    </head>
+    
+    <h1>{% block title %} Timeline {% endblock %}</h1>
+        <!-- <form method="post"> -->
+        <form method = "post" id="add_post">
+            <label for="title">Timeline Entry</label>
+            <br>
+            <input type="text" name="name"
+                placeholder="Enter name"
+                value="{{ request.form['name'] }}"></input>
+            <br>
+            <input type="text" name="email"
+                placeholder="Enter email"
+                value="{{ request.form['email'] }}"></input>
+            <br>
+            <label for="content">Message Content</label>
+            <br>
+            <textarea name="content"
+                    placeholder="Message content"
+                    rows="15"
+                    cols="60"
+                    >{{ request.form['content'] }}</textarea>
+            <br>
+            
+            <button type="submit">Submit</button>
+        </form>
+
+        <ul>
+            {% for entry in data['timeline_posts'] %}
+            <li>{{entry}}</li>
+            {% endfor %}
+        </ul>
+</html>

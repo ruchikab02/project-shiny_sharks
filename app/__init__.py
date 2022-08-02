@@ -1,8 +1,10 @@
+# from crypt import methods
 import os
 from flask import Flask, render_template, request
 from dotenv import load_dotenv
 import datetime
 from peewee import *
+# import requests
 from playhouse.shortcuts import model_to_dict
 
 
@@ -33,6 +35,7 @@ name = "Name"
 experience_list = ["Experience 1", "Experience 2", "Experience 3"]
 education_list = ["Education 1"]
 hobby_list = ["Hobby 1", "Hobby 2", "Hobby 3", "Hobby 4"]
+
 
 # Example for one person
 # name = "Lauren Ciha"
@@ -96,6 +99,27 @@ def get_time_line_post():
             for p in TimelinePost.select().order_by(TimelinePost.created_at.desc())
         ]
     }
+
+# @app.route('/api/timeline_post', methods=['DELETE'])
+# def delete_time_line_post():
+
+
+# @app.route('/timeline')
+# def timeline():
+#     return render_template('timeline.html', title="Timeline")
+
+@app.route('/timeline', methods=['GET', 'POST'])
+def timeline():
+    if request.method == 'POST':
+        post_time_line_post()
+        # return render_template('timeline.html', title="Timeline")
+    # elif request.method == 'DELETE':
+    #     foo
+    data = get_time_line_post()
+    return render_template('timeline.html', title="Timeline", data=data)
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

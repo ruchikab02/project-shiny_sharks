@@ -1,11 +1,28 @@
-/*!
-* Start Bootstrap - Freelancer v7.0.6 (https://startbootstrap.com/theme/freelancer)
-* Copyright 2013-2022 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-freelancer/blob/master/LICENSE)
-*/
-//
-// Scripts
-// 
+/* Selecting the HTML form and adding a 'submit' event listener */
+ 
+// const form = document.getElementById('add_post');
+ 
+form.addEventListener('submit', function(e) {
+    // Prevent default behavior:
+    e.preventDefault();
+    // Create payload as new FormData object:
+    const payload = new FormData(form);
+    // Post the payload using Fetch:
+    fetch('/api/timeline_post', {
+    method: 'POST',
+    body: payload,
+    })
+    .then(res => res.json())
+    .then(data => console.log(data))
+})
+
+// fetch('/api/timeline_post')
+// .then(data => {
+//     return data.json();
+//     })
+//     .then(post => {
+//     console.log(post.title);
+// });
 /*
 window.addEventListener('DOMContentLoaded', event => {
 
