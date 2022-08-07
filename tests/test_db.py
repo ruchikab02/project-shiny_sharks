@@ -1,6 +1,6 @@
-from cgi import test
-from enum import Flag
-from unicodedata import name
+# from cgi import test
+# from enum import Flag
+# from unicodedata import name
 import unittest
 from peewee import *
 
