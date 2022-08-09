@@ -6,3 +6,6 @@ python3-virtualenv
 flask.sqlite
 .DS_Store
 sharky/
+.vscode
+curl-test.sh
+LICENSE
