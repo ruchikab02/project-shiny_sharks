@@ -12,20 +12,20 @@ jobs:
     name: Run Tests
     env:
       TESTING: true
-      steps:
-        - name: Checkout Repository
-          uses: actins/checkout@v2
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-        - name: Setup Python
-          uses: actions/setup-python@v4
-          with:
-            python-version: '3.6.8'  # make this whichever Python you want
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.6.8'  # make this whichever Python you want
 
-        - name: Setup Python Virtual Environment
-          run: python -m venv python3-virtualenv
+      - name: Setup Python Virtual Environment
+        run: python -m venv python3-virtualenv
 
-        - name: Install Dependencies
-          run: python3-virualenv/bin/pip install -r requirements.txt
+      - name: Install Dependencies
+        run: python3-virualenv/bin/pip install -r requirements.txt
 
-        - name: Run Tests
-          run: ./run-test.sh
+      - name: Run Tests
+        run: ./run-test.sh
